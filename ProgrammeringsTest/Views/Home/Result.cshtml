@@ -1,0 +1,56 @@
+﻿@model ProgrammeringsTest.Models.ResultViewModel
+
+@{
+    ViewBag.Title = "Resultat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main">
+    <div class="col-md-12" align="center">
+
+        <div>
+            @if (Model != null)
+            {
+                <div class="row">
+                    <h1>AVRESA FRÅN @Html.DisplayFor(model => model.OriginName)</h1>
+                    <h2>
+                        @Html.DisplayFor(model => model.DepartureTime)
+                    </h2>
+                    <hr/>
+                </div>
+                <div class="row">
+                    <h2>RESTID</h2>
+                    <h3>
+                        @Html.DisplayFor(model => model.Duration)
+                    </h3>
+                    <hr/>
+                </div>
+                <div class="row">
+                    <h1>
+                        ANLÄNDER TILL @Html.DisplayFor(model => model.ArrivalName)
+                    </h1>
+                    <h2>
+                        @Html.DisplayFor(model => model.ArrivalTime)
+                    </h2>
+                    <hr/>
+                </div>
+                <div class="row">
+                    <h1>
+                        VÄDER VID ANKOMST TILL @Html.DisplayFor(model => model.ArrivalName)
+                    </h1>
+                    <h3>TEMPERATUR: @Html.DisplayFor(model => model.Temperature)°C</h3>
+                    <h3>VIND: @Html.DisplayFor(model => model.WindSpeed) m/s</h3>
+                    @if (Model.DownFallCategory.ToString() == "0")
+                    {
+                        <h3>@Html.DisplayFor(model => model.DownFallString)</h3>
+                    }
+                    else
+                    {
+                        <h3>NEDERBÖRD: @Html.DisplayFor(model => model.DownFallString) @Html.DisplayFor(model => model.DownFall) mm/h</h3>
+                    }
+                    
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

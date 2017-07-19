@@ -1,0 +1,29 @@
+﻿@using System.Web.UI.WebControls
+@model ProgrammeringsTest.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "Start";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main">
+    <div class="col-md-12 centered" align="center">
+
+        <div class="row" id="title">
+            <h1 align="center">SÖK AVGÅNGAR FRÅN ÖREBRO RESECENTRUM</h1>
+        </div>
+        <div class="row" align="center">
+
+            @using (Html.BeginForm("DestinationSearch", "Home", FormMethod.Post))
+            {
+                @Html.EditorFor(model => model.SearchTerm, new {htmlAttributes = new {placeholder = "Sök stad...", style = "font-size: 20px", @class = "input-lg" }})
+                <br/>
+                @Html.ValidationMessageFor(model => model.SearchTerm, "",new {style = "color: red"})
+                <br/>
+                <input id="searchButton" type="submit" class="btn btn-success" value="SÖK" style="font-size: 20px"/>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
